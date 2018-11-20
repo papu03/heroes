@@ -1,0 +1,61 @@
+
+<!-- 
+Fa riferimento a name e id dell'hero statico definito in ts.
+<h2>{{hero.name | uppercase}} Details</h2>
+<div><span>id: </span>{{hero.id}}</div> -->
+<!-- <div><span>name: </span>{{hero.name}}</div> -->
+<!-- <div>
+  <label>name:
+     <input [(ngModel)]="hero.name" placeholder="name">
+  </label>
+</div> -->
+
+<!-- <div *ngIf="selectedHero"> 
+inizialmente selectedHero è nullo quindi non ci sono name e id. lancerebbe un errore senza l'if. 
+When selectedHero is undefined, the ngIf removes the hero detail from the DOM .
+When the user picks a hero, selectedHero has a value and ngIf puts the hero detail into the DOM.
+  <h2>{{selectedHero.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedHero.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedHero.name" placeholder="name">
+    </label>
+  </div>
+</div>
+-->
+
+<!--<h2>My Heroes</h2>
+<ul class="heroes">
+  <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero"> Assegna hero selezionato a selectedHero
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul>-->
+
+<!--<app-hero-detail [hero]="selectedHero"></app-hero-detail> Chiama lo slave component passando selectedHero a hero-->
+
+<app-hero-search></app-hero-search>
+
+<div>
+    <label>Hero name:
+      <input #heroName />
+    </label>
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button (click)="add(heroName.value); heroName.value=''">
+      add
+    </button>
+</div>
+
+<ul class="heroes">
+    <li *ngFor="let hero of heroes">
+      <a routerLink="/detail/{{hero.id}}">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+      </a>
+      <button class="delete" title="delete hero"
+      (click)="delete(hero)">x</button>
+    </li>
+</ul>
+
+
+
+
+
